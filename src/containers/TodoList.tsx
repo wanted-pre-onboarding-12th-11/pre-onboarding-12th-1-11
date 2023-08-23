@@ -78,19 +78,18 @@ const TodoListContainer = () => {
         getTodos();
     }, [getTodos]);
 
-    // useEffect(() => {
-    //     console.log(2);
-    // }, [todoState]);
-
     // 해당 파일에서는 데이터 패칭 및 상태 업데이트 관련 로직만 넣고 싶은데 아래 투두 수정 관련한 ui 상태가 추가되어 Create, Item만 있는 컴포넌트를 한 번 더 분리해야할지 고민됨
     // 분리하게 되면 위 함수들은 props drilling 해야되서 번거로울 수 있음 => class로 모듈화하면 될까..?!
 
     const [modifyModeId, setModifyModeId] = useState<number | null>(null);
+    const isLoading = !todoState;
+    const isNothing = todoState.length === 0;
 
     return (
         <>
-            <h1>TodoList Container</h1>
             <Create createTodo={createTodo} />
+            {isLoading && <p>로딩 중...</p>}
+            {isNothing && <p>아직 할 일이 없습니다!</p>}
             {todoState.map(item => (
                 <Item
                     key={`todo-${item.id}`}
