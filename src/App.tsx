@@ -1,23 +1,19 @@
 import React from 'react';
-
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import ROUTES from './constants/routes';
 
 function App() {
-    return (
-        <div className='App'>
-            <header className='App-header'>
-                <p>"ㅎㅇ"</p>
-                <a
-                    className='App-link'
-                    href='https://reactjs.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Navigate to={ROUTES.TODO} />} />
+        <Route path={ROUTES.SIGNIN} />
+        <Route path={ROUTES.SIGNUP} />
+        <Route path={ROUTES.TODO} />
+        <Route path='/*' element={<Navigate to={ROUTES.TODO} />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
