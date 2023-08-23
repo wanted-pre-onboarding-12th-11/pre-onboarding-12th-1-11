@@ -11,6 +11,7 @@ import {INVALID_ERROR_MSG} from '../constants/message';
 const TodoListContainer = () => {
     const todoState = useTodoState();
     const todoDispatch = useTodoDispatch();
+    const [isLoading, setIsLoading] = useState(true);
 
     const getTodos = useCallback(async () => {
         // console.log('서버로 부터 데이터 받아옴');
@@ -23,6 +24,8 @@ const TodoListContainer = () => {
             } else {
                 console.error(INVALID_ERROR_MSG);
             }
+        } finally {
+            setIsLoading(false);
         }
     }, [todoDispatch]);
 
@@ -82,8 +85,7 @@ const TodoListContainer = () => {
     // 분리하게 되면 위 함수들은 props drilling 해야되서 번거로울 수 있음 => class로 모듈화하면 될까..?!
 
     const [modifyModeId, setModifyModeId] = useState<number | null>(null);
-    const isLoading = !todoState;
-    const isNothing = todoState.length === 0;
+    const isNothing = !isLoading && todoState.length === 0;
 
     return (
         <>
