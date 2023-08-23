@@ -14,11 +14,11 @@ export const createTodo = async (todo: {todo: string}) => {
 };
 
 export const updateTodo = async (id: number, todo: {todo: string; isCompleted: boolean}) => {
-    const response = await Api.put(API_KEY, `${TODO_PATH}${id}`, todo, true);
+    const response = await Api.put(API_KEY, `${TODO_PATH}/${id}`, todo, true);
     return response;
 };
 
 export const deleteTodo = async (id: number) => {
-    const response = await Api.delete(API_KEY, `${TODO_PATH}${id}`, true);
+    const response = await Api.delete(API_KEY, `${TODO_PATH}/${id}`, true);
     return response;
 };
