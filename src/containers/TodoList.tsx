@@ -6,6 +6,7 @@ import * as fetcher from '../apis/TodoList';
 import Create from '../components/TodoList/Create';
 import {useTodoDispatch, useTodoState} from '../contexts/TodoList';
 import Item from '../components/TodoList/Item';
+import {INVALID_ERROR_MSG} from '../constants/message';
 
 const TodoListContainer = () => {
     const todoState = useTodoState();
@@ -20,7 +21,7 @@ const TodoListContainer = () => {
             if (e instanceof Error) {
                 alert(e.message);
             } else {
-                console.error('확인할 수 없는 에러 발생');
+                console.error(INVALID_ERROR_MSG);
             }
         }
     }, [todoDispatch]);
@@ -34,7 +35,7 @@ const TodoListContainer = () => {
                 if (e instanceof Error) {
                     alert(e.message);
                 } else {
-                    console.error('확인할 수 없는 에러 발생');
+                    console.error(INVALID_ERROR_MSG);
                 }
             }
         },
@@ -50,7 +51,7 @@ const TodoListContainer = () => {
                 if (e instanceof Error) {
                     alert(e.message);
                 } else {
-                    console.error('확인할 수 없는 에러 발생');
+                    console.error(INVALID_ERROR_MSG);
                 }
             }
         },
@@ -66,7 +67,7 @@ const TodoListContainer = () => {
                 if (e instanceof Error) {
                     alert(e.message);
                 } else {
-                    console.error('확인할 수 없는 에러 발생');
+                    console.error(INVALID_ERROR_MSG);
                 }
             }
         },

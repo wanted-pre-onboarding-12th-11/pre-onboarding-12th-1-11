@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
+import {INVALID_ERROR_MSG} from '../constants/message';
 
 interface RequestParams<T> {
     endpoint: string | undefined;
@@ -47,8 +48,7 @@ async function request<T>(params: RequestParams<T>): Promise<AxiosResponse> {
         if (e instanceof Error) {
             throw e;
         } else {
-            // e가 Error 타입이 아닌 경우에 대한 처리
-            throw new Error('확인할 수 없는 에러 발생');
+            throw new Error(INVALID_ERROR_MSG);
         }
     }
 }
