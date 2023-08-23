@@ -1,6 +1,22 @@
 import {useState} from 'react';
 import * as TodoType from '../../types/TodoList';
 
+interface ButtonProps {
+    name: string;
+    type: 'button' | 'submit';
+    testid: string;
+    handler?: () => void;
+    isDisabled?: boolean;
+}
+
+const Button = ({name, type, testid, handler, isDisabled = false}: ButtonProps) => {
+    return (
+        <button type={type} data-testid={testid} onClick={handler} disabled={isDisabled}>
+            {name}
+        </button>
+    );
+};
+
 interface ItemProps {
     item: TodoType.Item;
     updateTodo: (id: number, value: string, isCompleted: boolean) => void;
@@ -27,6 +43,7 @@ const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
 
     const handleModifyCancelClick = () => {
         setModifiedValue(todo);
+        setIsModifyMode(false);
     };
 
     const handleModifySubmit = (e: React.FormEvent) => {
@@ -53,20 +70,18 @@ const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
                         <span>{todo}</span>
                     </div>
                     <div>
-                        <button
+                        <Button
+                            name='수정'
                             type='button'
-                            data-testid='modify-button'
-                            onClick={handleModifyClick}
-                        >
-                            수정
-                        </button>
-                        <button
+                            testid='modify-button'
+                            handler={handleModifyClick}
+                        />
+                        <Button
+                            name='삭제'
                             type='button'
-                            data-testid='delete-button'
-                            onClick={handleDeleteClick}
-                        >
-                            삭제
-                        </button>
+                            testid='delete-button'
+                            handler={handleDeleteClick}
+                        />
                     </div>
                 </div>
             ) : (
@@ -79,16 +94,13 @@ const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
                         onChange={handleInputChange}
                     />
                     <div>
-                        <button type='submit' data-testid='submit-button'>
-                            제출
-                        </button>
-                        <button
+                        <Button name='제출' type='submit' testid='submit-button' />
+                        <Button
+                            name='취소'
                             type='button'
-                            data-testid='cancel-button'
-                            onClick={handleModifyCancelClick}
-                        >
-                            취소
-                        </button>
+                            testid='cancel-button'
+                            handler={handleModifyCancelClick}
+                        />
                     </div>
                 </form>
             )}
