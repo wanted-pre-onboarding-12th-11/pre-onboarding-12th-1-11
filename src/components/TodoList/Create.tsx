@@ -1,11 +1,24 @@
-import {LegacyRef} from 'react';
+import {useRef} from 'react';
 
 interface TodoCreateProps {
-    inputRef: LegacyRef<HTMLInputElement> | undefined;
-    handleFormSubmit: (e: React.FormEvent) => void;
+    createTodo: (value: string) => void;
 }
 
-const TodoCreate = ({inputRef, handleFormSubmit}: TodoCreateProps) => {
+const TodoCreate = ({createTodo}: TodoCreateProps) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const value = inputRef.current?.value || null;
+        if (value && value !== '') {
+            createTodo(value || '');
+        }
+        if (inputRef.current) {
+            inputRef.current.value = '';
+            inputRef.current.focus();
+        }
+    };
+
     return (
         <form onSubmit={handleFormSubmit}>
             <input
