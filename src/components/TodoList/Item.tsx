@@ -27,6 +27,10 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
         setModifyModeId(id);
     };
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setModifiedValue(e.target.value);
+    };
+
     const handleModifyCancelClick = () => {
         setModifiedValue(todo);
         setModifyModeId(null);
@@ -34,12 +38,11 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
 
     const handleModifySubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        updateTodo(id, modifiedValue, isCompleted);
-        setModifyModeId(null);
-    };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setModifiedValue(e.target.value);
+        // 수정 제출 시 깜빡임 발생 방지 (비동기 코드 동작 후 수정 인풋 컴포넌트 숨김)
+        Promise.resolve(updateTodo(id, modifiedValue, isCompleted)).then(() =>
+            setModifyModeId(null)
+        );
     };
 
     return (
