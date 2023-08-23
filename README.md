@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# pre-onboarding-12th-1-11
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 작업 규칙
+- master에 직접 올리지 마세요 !
+- Force-commit 이나 hard 옵션 등을 사용하지 마세요 !
+- 질문 및 건의사항은 디스코드을 적극 사용해주세요 ! 👍
+- 작업 branch는 feature/[이름약자]-[작업내용] 형태로 올려주세요.
+  - ex) feature/[TJ]-ProfilePage
+- 스타일 파일 컨벤션
+    - `파스칼케이스.styled.ts`
+    - import * as S from "../styles/Todo.styled";
+  
+- ### 커밋 메시지 컨벤션
+  - 예시: `feat: 로그인 기능 구현`
 
-## Available Scripts
+|커밋 유형|의미|
+|:---:|:---:|
+|init| 프로젝트 시작|
+|feat| 기능 추가|
+|style| 코드 포맷팅|
+|refactor| 코드 리팩토링|
+|chore| 패키지 매니저 및 그 외 기타 수정 ex) .gitignore|
+|rename| 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |
+|remove|파일을 삭제하는 작업만 수행한 경우|
+|setting|기본 세팅 변경의 경우|
+- **디렉토리명**
+    - 폴더명 - 소문자, 복수 , 컴포넌트 관련 폴더는 메인 컴포넌트 명
+    - 일반 파일명,변수,함수 **camel case**
+    - 컴포넌트 관련(스타일 포함) **pascal case**
+- 비동기함수
+    - async/await 사용
+- constants
+    - routes
+    - message
+    - apiKey
+      
+## 디렉토리 구조
 
-In the project directory, you can run:
+- `Page` 
+ - 라우팅의 단위가 될 컴포넌트이다.
+ - 단순 래핑의 역할과 SEO를 위한 메타태그 설정의 역할만 한다.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `Container`
+    
+  - 데이터 패칭, 이벤트 처리 등의 비즈니스 로직은 컨테이너가 담당한다.
+  - UI 컴포넌트를 컨트롤하는 역할이다.
+    
+- `Component`
+    
+  - 순수하게 UI 로직만 가지고 있다.
+  - UI 관련 상태, 이벤트 핸들링만을 처리한다. 이 외는 모두 컨테이너로부터 주입 받아야 한다.
+  - 반드시 독립적으로 설계되어 재사용 가능해야 한다.
+  
