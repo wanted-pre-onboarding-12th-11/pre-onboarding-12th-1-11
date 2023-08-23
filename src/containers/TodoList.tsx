@@ -1,7 +1,7 @@
 //- 데이터 패칭, 이벤트 처리 등의 비즈니스 로직은 컨테이너가 담당한다.
 //- UI 컴포넌트를 컨트롤하는 역할이다.
 
-import {useCallback, useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import * as fetcher from '../apis/TodoList';
 import Create from '../components/TodoList/Create';
 import {useTodoDispatch, useTodoState} from '../contexts/TodoList';
@@ -81,6 +81,11 @@ const TodoListContainer = () => {
     //     console.log(2);
     // }, [todoState]);
 
+    // 해당 파일에서는 데이터 패칭 및 상태 업데이트 관련 로직만 넣고 싶은데 아래 투두 수정 관련한 ui 상태가 추가되어 Create, Item만 있는 컴포넌트를 한 번 더 분리해야할지 고민됨
+    // 분리하게 되면 위 함수들은 props drilling 해야되서 번거로울 수 있음 => class로 모듈화하면 될까..?!
+
+    const [modifyModeId, setModifyModeId] = useState<number | null>(null);
+
     return (
         <>
             <h1>TodoList Container</h1>
@@ -91,6 +96,8 @@ const TodoListContainer = () => {
                     item={item}
                     updateTodo={updateTodo}
                     deleteTodo={deleteTodo}
+                    modifyModeId={modifyModeId}
+                    setModifyModeId={setModifyModeId}
                 />
             ))}
         </>

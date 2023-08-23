@@ -21,12 +21,13 @@ interface ItemProps {
     item: TodoType.Item;
     updateTodo: (id: number, value: string, isCompleted: boolean) => void;
     deleteTodo: (id: number) => void;
+    modifyModeId: number | null;
+    setModifyModeId: (id: number | null) => void;
 }
 
-const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
+const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: ItemProps) => {
     const {id, todo, isCompleted} = item;
-
-    const [isModifyMode, setIsModifyMode] = useState(false);
+    const isModifyMode = modifyModeId === id;
     const [modifiedValue, setModifiedValue] = useState(todo);
 
     const handleIsCompletedChange = () => {
@@ -38,18 +39,18 @@ const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
     };
 
     const handleModifyClick = () => {
-        setIsModifyMode(true);
+        setModifyModeId(id);
     };
 
     const handleModifyCancelClick = () => {
         setModifiedValue(todo);
-        setIsModifyMode(false);
+        setModifyModeId(null);
     };
 
     const handleModifySubmit = (e: React.FormEvent) => {
         e.preventDefault();
         updateTodo(id, modifiedValue, isCompleted);
-        setIsModifyMode(false);
+        setModifyModeId(null);
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,12 +76,14 @@ const Item = ({item, updateTodo, deleteTodo}: ItemProps) => {
                             type='button'
                             testid='modify-button'
                             handler={handleModifyClick}
+                            isDisabled={modifyModeId !== id && modifyModeId !== null}
                         />
                         <Button
                             name='삭제'
                             type='button'
                             testid='delete-button'
                             handler={handleDeleteClick}
+                            isDisabled={modifyModeId !== id && modifyModeId !== null}
                         />
                     </div>
                 </div>
