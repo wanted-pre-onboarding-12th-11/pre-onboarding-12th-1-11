@@ -1,4 +1,5 @@
 import {useRef} from 'react';
+import Button from '../common/Button';
 
 interface TodoCreateProps {
     createTodo: (value: string) => void;
@@ -27,9 +28,8 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
                 type='text'
                 ref={inputRef}
             />
-            <button data-testid='new-todo-add-button' type='submit'>
-                추가
-            </button>
+
+            <Button name='추가' type='submit' testid='new-todo-add-button' />
         </form>
     );
 };
