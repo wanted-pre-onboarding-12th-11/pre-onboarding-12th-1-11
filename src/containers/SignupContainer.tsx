@@ -10,8 +10,11 @@ import { useInput } from '../hooks/useInput';
 import { signupAPI } from '../apis/signApi';
 import { emailValidation, passwordValidation } from '../utils/validation';
 
-// library, constant data import 
+// library import 
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// constant data import 
 import ROUTES from '../constants/routes';
 
 
@@ -21,10 +24,15 @@ export const SignupContainer = () => {
   const [email, handleEmail] = useInput('');
   const [password, handlePassword] = useInput('');
 
-  const handleSubmit = async () => {
+  // 최적화된 검증 함수 사용
+  const isEmailValid = useMemo(() => emailValidation(email), [email]);
+  const isPasswordValid = useMemo(() => passwordValidation(password), [password]);
+
+  // 이벤트 핸들러 메모이제이션
+  const memoizedHandleSubmit = useMemo(() => async () => {
     await signupAPI(email, password);
     navigate(ROUTES.TODO);
-  }
+  }, []);
 
   return (
     <SignupContainerStyled>
@@ -38,8 +46,8 @@ export const SignupContainer = () => {
         <Button
           type='가입하기'
           testid='signup-button'
-          disabled={!passwordValidation(email) || !emailValidation(password)}
-          onClick={handleSubmit} />
+          disabled={!isPasswordValid || !isEmailValid}
+          onClick={memoizedHandleSubmit} />
       </form>
       <AuthFooter
         text='이미 가입하셨나요?'
