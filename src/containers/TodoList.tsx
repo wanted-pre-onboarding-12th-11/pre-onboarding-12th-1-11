@@ -98,6 +98,11 @@ const TodoListContainer = () => {
             )}
             {isNothing && (
                 <S.Empty>
+                    <S.BreakImage
+                        src={'/assets/images/coffeebreak.png'}
+                        alt='breaktime'
+                        width='150px'
+                    />
                     <S.EmptyMessage>아직 할 일이 없습니다!</S.EmptyMessage>
                 </S.Empty>
             )}
