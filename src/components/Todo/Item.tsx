@@ -44,7 +44,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
     return (
         <>
             {!isModifyMode ? (
-                <S.TodoItem>
+                <S.TodoItem className={isCompleted.toString()}>
                     <label htmlFor={id.toString()}>
                         <S.Checkbox
                             id={id.toString()}
