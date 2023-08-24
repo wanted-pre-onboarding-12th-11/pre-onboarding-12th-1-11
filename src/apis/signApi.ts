@@ -4,7 +4,9 @@ import { SIGNIN_SUCCESS, SIGNUP_SUCCESS, SIGNIN_FAILED, SIGNUP_FAILED } from '..
 export const signinAPI = async (email: string, password: string) => {
   try {
     const response = await signAxios.post('/auth/signin', { email, password });
+
     localStorage.setItem("access_token", response.data.access_token);
+
     alert(SIGNIN_SUCCESS);
     return response;
   }
@@ -16,6 +18,7 @@ export const signinAPI = async (email: string, password: string) => {
 export const signupAPI = async (email: string, password: string) => {
   try {
     const response = await signAxios.post('/auth/signup', { email, password });
+
     alert(SIGNUP_SUCCESS);
     return response;
   }
