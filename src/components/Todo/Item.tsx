@@ -1,6 +1,6 @@
-import {useState} from 'react';
 import * as TodoType from '../../types/Todo';
 import * as S from '../../styles/Todo.styled';
+import {useInput} from '../../hooks/useInput';
 
 interface ItemProps {
     item: TodoType.Item;
@@ -13,7 +13,7 @@ interface ItemProps {
 const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: ItemProps) => {
     const {id, todo, isCompleted} = item;
     const isModifyMode = modifyModeId === id;
-    const [modifiedValue, setModifiedValue] = useState(todo);
+    const [modifiedValue, handleInputChange, setModifiedValue] = useInput(todo);
 
     const handleIsCompletedChange = () => {
         updateTodo(id, todo, !isCompleted);
@@ -29,10 +29,6 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
         setModifyModeId(id);
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setModifiedValue(e.target.value);
-    };
-
     const handleModifyCancelClick = () => {
         setModifiedValue(todo);
         setModifyModeId(null);
@@ -40,8 +36,6 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
 
     const handleModifySubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        // 수정 제출 시 깜빡임 발생 방지 (비동기 코드 동작 후 수정 인풋 컴포넌트 숨김)
         Promise.resolve(updateTodo(id, modifiedValue, isCompleted)).then(() =>
             setModifyModeId(null)
         );
