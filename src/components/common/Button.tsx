@@ -1,18 +1,14 @@
-interface ButtonProps {
-  type: string;
-  testid: string;
-  disabled?: boolean;
-  onClick: () => Promise<void> | void;
-}
+import { ButtonProps } from '../../types/AuthTypes';
 
 export const Button = ({ type, testid, disabled, onClick }: ButtonProps) => {
+  console.info('Button re-rendering');
+
   return (
     <button
       type='button'
       data-testid={testid}
       disabled={disabled}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {type}
     </button>
   )
