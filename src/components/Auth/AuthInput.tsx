@@ -1,18 +1,7 @@
 import { Input } from '../common/Input';
 import * as S from '../../styles/Auth.styled';
-import { ChangeEvent } from 'react';
 import { AuthErrorMessage } from './AuthErrorMessage';
-
-interface AuthInputProps {
-  email: string,
-  handleEmail: (e: ChangeEvent<HTMLInputElement>) => void,
-  password: string,
-  handlePassword: (e: ChangeEvent<HTMLInputElement>) => void,
-  errorMessage: {
-    emailError: string,
-    passwordError: string,
-  }
-}
+import { AuthInputProps } from '../../types/AuthTypes';
 
 export const AuthInput = ({
   email,
@@ -28,7 +17,7 @@ export const AuthInput = ({
     <S.AuthInputStyled>
       <Input
         label='이메일'
-        id='eamil'
+        id='email'
         type='text'
         testid='email-input'
         placeholder='이메일을 입력해주세요.'
