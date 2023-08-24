@@ -1,5 +1,6 @@
 import ROUTES from '../constants/routes';
 import {postSignIn, postSignUp} from '../apis/Auth';
+import * as M from './message';
 
 export const SIGNIN_PROPS = {
     api: postSignIn,
@@ -10,6 +11,8 @@ export const SIGNIN_PROPS = {
     footerType: '회원가입',
     testid: 'signin-button',
     footerText: '아직 회원이 아니신가요?',
+    successMsg: M.SIGNIN_SUCCESS,
+    errorMsg: M.SIGNIN_FAILED,
 };
 
 export const SIGNUP_PROPS = {
@@ -21,4 +24,6 @@ export const SIGNUP_PROPS = {
     footerType: '로그인',
     testid: 'signup-button',
     footerText: '이미 가입하셨나요?',
+    successMsg: M.SIGNUP_SUCCESS,
+    errorMsg: M.SIGNUP_FAILED,
 };

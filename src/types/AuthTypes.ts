@@ -12,6 +12,8 @@ export interface AuthPageProps {
     footerType: string;
     testid: string;
     footerText: string;
+    successMsg: string;
+    errorMsg: string;
 }
 
 export interface AuthFooterProps {

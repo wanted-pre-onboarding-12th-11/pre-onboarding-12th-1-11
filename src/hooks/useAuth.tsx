@@ -5,9 +5,13 @@ import {AuthAPI} from '../types/AuthTypes';
 interface UseAuthProps {
     api: AuthAPI;
     navigation: string;
+    message: {
+        success: string;
+        error: string;
+    };
 }
 
-const useAuth = ({api, navigation}: UseAuthProps) => {
+const useAuth = ({api, navigation, message}: UseAuthProps) => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: {value: '', validator: (value: string) => value.includes('@'), isValid: false},
@@ -41,10 +45,12 @@ const useAuth = ({api, navigation}: UseAuthProps) => {
                 if (res.status === 200) {
                     localStorage.setItem('accessToken', res.data.access_token);
                 }
+                alert(message.success);
                 navigate(navigation);
             }
         } catch (error) {
             console.error(error);
+            alert(message.error);
         }
     };
 

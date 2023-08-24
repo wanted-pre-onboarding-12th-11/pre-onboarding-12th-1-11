@@ -26,8 +26,14 @@ export const AuthContainer = ({
     footerType,
     testid,
     footerText,
+    successMsg,
+    errorMsg,
 }: AuthPageProps) => {
-    const {form, onChange, onSubmit, isSignValid} = useAuth({api, navigation});
+    const {form, onChange, onSubmit, isSignValid} = useAuth({
+        api,
+        navigation,
+        message: {success: successMsg, error: errorMsg},
+    });
 
     const [errorMessage, setErrorMessage] = useState({
         emailError: '',
