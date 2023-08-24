@@ -11,22 +11,12 @@ interface RequestParams<T> {
     isformDataHeader?: boolean;
 }
 
-async function request<T>(params: RequestParams<T>): Promise<AxiosResponse> {
-    const {
-        endpoint,
-        method,
-        params: urlParams,
-        query,
-        data,
-        requiresToken,
-        isformDataHeader,
-    } = params;
+const request = async <T>(params: RequestParams<T>): Promise<AxiosResponse> => {
+    const {endpoint, method, params: urlParams, query, data, requiresToken} = params;
 
     const apiUrl = urlParams ? `${endpoint}${urlParams}${query ? `?${query}` : ''}` : endpoint;
 
-    const headers: Record<string, string> = isformDataHeader
-        ? {'Content-Type': 'multipart/form-data'}
-        : {'Content-Type': 'application/json'};
+    const headers: Record<string, string> = {'Content-Type': 'application/json'};
 
     if (requiresToken) {
         const token = localStorage.getItem('accessToken');
@@ -51,7 +41,7 @@ async function request<T>(params: RequestParams<T>): Promise<AxiosResponse> {
             throw new Error(INVALID_ERROR_MSG);
         }
     }
-}
+};
 
 const get = (
     endpoint: string | undefined,
