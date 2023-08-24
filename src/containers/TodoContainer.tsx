@@ -1,6 +1,3 @@
-//- 데이터 패칭, 이벤트 처리 등의 비즈니스 로직은 컨테이너가 담당한다.
-//- UI 컴포넌트를 컨트롤하는 역할이다.
-
 import {useCallback, useEffect, useState} from 'react';
 import * as fetcher from '../apis/Todo';
 import Create from '../components/Todo/Create';
