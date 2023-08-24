@@ -1,21 +1,24 @@
-// react import 
-import { memo } from 'react';
-// type, style import 
-import { ButtonProps } from '../../types/CommonTypes';
-import * as S from '../../styles/Common.styled';
+interface ButtonProps {
+    children: string;
+    type: 'button' | 'submit';
+    testid: string;
+    handler?: () => void;
+    isDisabled?: boolean;
+    className?: string;
+}
 
+const Button = ({children, type, testid, handler, isDisabled = false, className}: ButtonProps) => {
+    return (
+        <button
+            type={type}
+            data-testid={testid}
+            onClick={handler}
+            disabled={isDisabled}
+            className={className}
+        >
+            {children}
+        </button>
+    );
+};
 
-export const Button = memo(({ type, testid, disabled, onClick }: ButtonProps) => {
-  console.info('Button re-rendering');
-
-  return (
-    <S.ButtonStyled
-      type='button'
-      data-testid={testid}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {type}
-    </S.ButtonStyled>
-  )
-})
+export default Button;

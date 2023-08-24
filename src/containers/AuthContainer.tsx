@@ -1,68 +1,71 @@
-// component import 
-import { AuthTitle } from '../components/Auth/AuthTitle';
-import { AuthInput } from '../components/Auth/AuthInput';
-import { Button } from '../components/common/Button';
-import { AuthFooter } from '../components/Auth/AuthFooter';
+// component import
+import AuthTitle from '../components/Auth/AuthTitle';
+import AuthInput from '../components/Auth/AuthInput';
+import {AuthFooter} from '../components/Auth/AuthFooter';
 import * as S from '../styles/Auth.styled';
 
-// custom hook, api, validation import 
+// custom hook, api, validation import
 import useAuth from '../hooks/useAuth';
 
-// library import 
-import { useEffect, useState } from 'react';
+// library import
+import {useEffect, useState} from 'react';
 
-// constant data import 
-import { EMAIL_VALIDATION_MSG, PASSWORD_VALIDATION_MSG } from '../constants/message';
+// constant data import
+import {EMAIL_VALIDATION_MSG, PASSWORD_VALIDATION_MSG} from '../constants/message';
 
 // types import
-import { AuthPageProps } from '../types/AuthTypes';
+import {AuthPageProps} from '../types/AuthTypes';
 
+const AuthContainer = ({
+    api,
+    title,
+    navigation,
+    link,
+    buttonType,
+    footerType,
+    testid,
+    footerText,
+}: AuthPageProps) => {
+    const {form, onChange, onSubmit, isSignValid} = useAuth({api, navigation});
 
-export const AuthContainer = ({ api, title, navigation, link, buttonType, footerType, testid, footerText }: AuthPageProps) => {
-  const { form, onChange, onSubmit, isSignValid } = useAuth({ api, navigation });
+    const [errorMessage, setErrorMessage] = useState({
+        emailError: '',
+        passwordError: '',
+    });
 
+    useEffect(() => {
+        const updatedErrorMessage = {
+            ...errorMessage,
+            emailError: form.email.isValid ? '' : EMAIL_VALIDATION_MSG,
+            passwordError: form.password.isValid ? '' : PASSWORD_VALIDATION_MSG,
+        };
 
-  const [errorMessage, setErrorMessage] = useState({
-    emailError: '',
-    passwordError: '',
-  })
+        setErrorMessage(updatedErrorMessage);
+    }, [form.email.isValid, form.password.isValid]);
 
-  useEffect(() => {
-    const updatedErrorMessage = {
-      ...errorMessage,
-      emailError: form.email.isValid ? '' : EMAIL_VALIDATION_MSG,
-      passwordError: form.password.isValid ? '' : PASSWORD_VALIDATION_MSG,
-    };
+    return (
+        <S.AuthContainerStyled>
+            <AuthTitle title={title} />
+            <form>
+                <AuthInput
+                    email={form.email.value}
+                    handleEmail={onChange}
+                    password={form.password.value}
+                    handlePassword={onChange}
+                    errorMessage={errorMessage}
+                />
+                <S.AuthButtonStyled
+                    type={'submit'}
+                    testid={testid}
+                    isDisabled={!isSignValid}
+                    handler={onSubmit}
+                >
+                    {buttonType}
+                </S.AuthButtonStyled>
+            </form>
+            <AuthFooter text={footerText} type={footerType} route={link} />
+        </S.AuthContainerStyled>
+    );
+};
 
-    setErrorMessage(updatedErrorMessage);
-
-  }, [form.email.isValid, form.password.isValid]);
-
-
-  return (
-    <S.AuthContainerStyled>
-      <AuthTitle title={title} />
-      <form >
-        <AuthInput
-          email={form.email.value}
-          handleEmail={onChange}
-          password={form.password.value}
-          handlePassword={onChange}
-          errorMessage={errorMessage}
-        />
-        <Button
-          type={buttonType}
-          testid={testid}
-          disabled={!isSignValid}
-          onClick={onSubmit}
-        />
-      </form>
-      <AuthFooter
-        text={footerText}
-        type={footerType}
-        route={link}
-      />
-    </S.AuthContainerStyled>
-
-  )
-}
+export default AuthContainer;
