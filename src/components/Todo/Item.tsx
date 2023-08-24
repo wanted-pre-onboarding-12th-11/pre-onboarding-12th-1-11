@@ -89,6 +89,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
                             data-testid='modify-input'
                             value={modifiedValue}
                             onChange={handleInputChange}
+                            maxLength={30}
                         />
                     </label>
                     <div>
