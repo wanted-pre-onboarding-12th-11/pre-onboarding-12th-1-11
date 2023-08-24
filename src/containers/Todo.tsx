@@ -13,6 +13,8 @@ const TodoContainer = () => {
     const todoState = useTodoState();
     const todoDispatch = useTodoDispatch();
     const [isLoading, setIsLoading] = useState(true);
+    const [modifyModeId, setModifyModeId] = useState<number | null>(null);
+    const isNothing = !isLoading && todoState.length === 0;
 
     const getTodo = useCallback(async () => {
         // console.log('서버로 부터 데이터 받아옴');
@@ -83,10 +85,7 @@ const TodoContainer = () => {
     }, [getTodo]);
 
     // 해당 파일에서는 데이터 패칭 및 상태 업데이트 관련 로직만 넣고 싶은데 아래 투두 수정 관련한 ui 상태가 추가되어 Create, Item만 있는 컴포넌트를 한 번 더 분리해야할지 고민됨
-    // 분리하게 되면 위 함수들은 props drilling 해야되서 번거로울 수 있음 => class로 모듈화하면 될까..?!
-
-    const [modifyModeId, setModifyModeId] = useState<number | null>(null);
-    const isNothing = !isLoading && todoState.length === 0;
+    // 분리하게 되면 위 함수들은 props drilling 해야되서 번거로울 수 있음 => class로 모듈화하면 될까..?!(o)
 
     return (
         <S.TodoContainer>
