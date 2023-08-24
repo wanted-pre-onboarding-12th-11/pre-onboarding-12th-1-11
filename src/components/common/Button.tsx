@@ -1,7 +1,7 @@
 // react import 
 import { memo } from 'react';
 // type, style import 
-import { ButtonProps } from '../../types/AuthTypes';
+import { ButtonProps } from '../../types/CommonTypes';
 import * as S from '../../styles/Common.styled';
 
 
