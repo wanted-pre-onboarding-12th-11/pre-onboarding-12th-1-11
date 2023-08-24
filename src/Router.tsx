@@ -1,4 +1,4 @@
-import {createBrowserRouter} from 'react-router-dom';
+import {createBrowserRouter, Navigate} from 'react-router-dom';
 import App from './App';
 import TodoPage from './pages/Todo';
 import NotFound from './pages/NotFound';
@@ -15,7 +15,7 @@ export const Router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Signin />,
+                element: <Navigate to='/todo' replace={true} />,
                 loader: redirectTodo,
             },
             {
