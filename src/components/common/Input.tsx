@@ -10,6 +10,7 @@ interface InputProps {
 }
 
 export const Input = ({ testid, id, type, placeholder, value, onChange }: InputProps) => {
+
   return (
     <div className='input'>
       <label htmlFor={id} />
