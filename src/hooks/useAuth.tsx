@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {AuthAPI} from '../types/AuthTypes';
 
@@ -27,7 +27,8 @@ const useAuth = ({api, navigation}: UseAuthProps) => {
         }
     };
 
-    const onSubmit = async () => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         const {
             email: {value: email},
             password: {value: password},
@@ -35,12 +36,15 @@ const useAuth = ({api, navigation}: UseAuthProps) => {
 
         try {
             const res = await api({email, password});
+
             if (res.status === 200 || res.status === 201) {
+                if (res.status === 200) {
+                    localStorage.setItem('accessToken', res.data.access_token);
+                }
                 navigate(navigation);
             }
         } catch (error) {
             console.error(error);
-            alert('실패');
         }
     };
 

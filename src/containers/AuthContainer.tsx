@@ -47,7 +47,7 @@ export const AuthContainer = ({
     return (
         <S.AuthContainerStyled>
             <AuthTitle title={title} />
-            <form>
+            <form onSubmit={onSubmit}>
                 <AuthInput
                     email={form.email.value}
                     handleEmail={onChange}
@@ -55,12 +55,7 @@ export const AuthContainer = ({
                     handlePassword={onChange}
                     errorMessage={errorMessage}
                 />
-                <Button
-                    type={'submit'}
-                    testid={testid}
-                    isDisabled={!isSignValid}
-                    handler={onSubmit}
-                >
+                <Button type={'submit'} testid={testid} isDisabled={!isSignValid}>
                     {buttonType}
                 </Button>
             </form>
