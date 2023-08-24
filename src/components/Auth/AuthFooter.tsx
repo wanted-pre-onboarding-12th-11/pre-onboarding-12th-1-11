@@ -1,7 +1,7 @@
 // react, router import
 import {memo} from 'react';
 import {Link} from 'react-router-dom';
-// style, type imort
+// style, type import
 import * as S from '../../styles/Auth.styled';
 import {AuthFooterProps} from '../../types/AuthTypes';
 

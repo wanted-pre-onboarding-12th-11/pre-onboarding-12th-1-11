@@ -85,5 +85,6 @@ export const AuthButtonStyled = styled(Button)`
     &:disabled {
         background: var(--light-gray);
         color: var(--dark-gray);
+        cursor: default;
     }
 `;
