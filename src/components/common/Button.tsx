@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { ButtonProps } from '../../types/AuthTypes';
 
-export const Button = ({ type, testid, disabled, onClick }: ButtonProps) => {
+export const Button = memo(({ type, testid, disabled, onClick }: ButtonProps) => {
   console.info('Button re-rendering');
 
   return (
@@ -8,8 +9,9 @@ export const Button = ({ type, testid, disabled, onClick }: ButtonProps) => {
       type='button'
       data-testid={testid}
       disabled={disabled}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {type}
     </button>
   )
-}
+})
