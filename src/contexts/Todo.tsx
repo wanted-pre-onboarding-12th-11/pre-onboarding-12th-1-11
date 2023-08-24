@@ -14,8 +14,8 @@ interface TodoProviderProps {
 const initialState: TodoType.Item[] | [] = [];
 const TodoStateContext = createContext<TodoType.Item[] | undefined>(undefined);
 
-type TodosDispatch = Dispatch<TodoAction>;
-const TodosDispatchContext = createContext<TodosDispatch | undefined>(undefined);
+type TodoDispatch = Dispatch<TodoAction>;
+const TodoDispatchContext = createContext<TodoDispatch | undefined>(undefined);
 
 const todoReducer = (todos: TodoType.Item[], action: TodoAction): TodoType.Item[] => {
     switch (action.type) {
@@ -39,24 +39,24 @@ const todoReducer = (todos: TodoType.Item[], action: TodoAction): TodoType.Item[
     }
 };
 
-export function TodoProvider({children}: TodoProviderProps) {
+export const TodoProvider = ({children}: TodoProviderProps) => {
     const [todoState, dispatch] = useReducer(todoReducer, initialState);
 
     return (
-        <TodosDispatchContext.Provider value={dispatch}>
+        <TodoDispatchContext.Provider value={dispatch}>
             <TodoStateContext.Provider value={todoState}>{children}</TodoStateContext.Provider>
-        </TodosDispatchContext.Provider>
+        </TodoDispatchContext.Provider>
     );
-}
+};
 
-export function useTodoState() {
+export const useTodoState = () => {
     const state = useContext(TodoStateContext);
-    if (!state) throw new Error('TodosProvider not found');
+    if (!state) throw new Error('TodoProvider not found');
     return state;
-}
+};
 
-export function useTodoDispatch() {
-    const dispatch = useContext(TodosDispatchContext);
-    if (!dispatch) throw new Error('TodosProvider not found');
+export const useTodoDispatch = () => {
+    const dispatch = useContext(TodoDispatchContext);
+    if (!dispatch) throw new Error('TodoProvider not found');
     return dispatch;
-}
+};
