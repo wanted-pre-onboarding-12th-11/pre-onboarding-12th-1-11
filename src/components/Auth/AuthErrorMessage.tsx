@@ -1,8 +1,8 @@
 import {memo} from 'react';
 import * as S from '../../styles/Auth.styled';
 
-export const AuthErrorMessage = memo(({message}: {message: string}) => {
-    console.info('AuthErrorMessage re-rendering');
-
+const AuthErrorMessage = memo(({message}: {message: string}) => {
     return <S.AuthErrorMessageStyled>{message}</S.AuthErrorMessageStyled>;
 });
+
+export default AuthErrorMessage;
