@@ -1,5 +1,6 @@
 import {useRef} from 'react';
 import Button from '../common/Button';
+import * as S from '../../styles/TodoList.styled';
 
 interface TodoCreateProps {
     createTodo: (value: string) => void;
@@ -21,7 +22,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
     };
 
     return (
-        <form onSubmit={handleFormSubmit}>
+        <S.TodoCreateForm onSubmit={handleFormSubmit}>
             <input
                 placeholder='할 일을 입력해 주세요...'
                 data-testid='new-todo-input'
@@ -30,7 +31,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
             />
 
             <Button name='추가' type='submit' testid='new-todo-add-button' />
-        </form>
+        </S.TodoCreateForm>
     );
 };
 

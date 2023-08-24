@@ -7,6 +7,7 @@ import Create from '../components/TodoList/Create';
 import {useTodoDispatch, useTodoState} from '../contexts/TodoList';
 import Item from '../components/TodoList/Item';
 import {INVALID_ERROR_MSG} from '../constants/message';
+import * as S from '../styles/TodoList.styled';
 
 const TodoListContainer = () => {
     const todoState = useTodoState();
@@ -88,21 +89,31 @@ const TodoListContainer = () => {
     const isNothing = !isLoading && todoState.length === 0;
 
     return (
-        <>
+        <S.TodoContainer>
             <Create createTodo={createTodo} />
-            {isLoading && <p>로딩 중...</p>}
-            {isNothing && <p>아직 할 일이 없습니다!</p>}
-            {todoState.map(item => (
-                <Item
-                    key={`todo-${item.id}`}
-                    item={item}
-                    updateTodo={updateTodo}
-                    deleteTodo={deleteTodo}
-                    modifyModeId={modifyModeId}
-                    setModifyModeId={setModifyModeId}
-                />
-            ))}
-        </>
+            {isLoading && (
+                <S.Empty>
+                    <S.EmptyMessage>로딩 중...</S.EmptyMessage>
+                </S.Empty>
+            )}
+            {isNothing && (
+                <S.Empty>
+                    <S.EmptyMessage>아직 할 일이 없습니다!</S.EmptyMessage>
+                </S.Empty>
+            )}
+            <S.TodoList>
+                {todoState.map(item => (
+                    <Item
+                        key={`todo-${item.id}`}
+                        item={item}
+                        updateTodo={updateTodo}
+                        deleteTodo={deleteTodo}
+                        modifyModeId={modifyModeId}
+                        setModifyModeId={setModifyModeId}
+                    />
+                ))}
+            </S.TodoList>
+        </S.TodoContainer>
     );
 };
 
