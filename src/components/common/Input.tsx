@@ -1,19 +1,11 @@
-import { ChangeEvent } from 'react';
+import * as S from '../../styles/Common.styled';
+import { InputProps } from '../../types/CommonTypes';
 
-interface InputProps {
-  id: string;
-  type: string;
-  testid: string;
-  placeholder?: string;
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
-
-export const Input = ({ testid, id, type, placeholder, value, onChange }: InputProps) => {
+export const Input = ({ label, testid, id, type, placeholder, value, onChange }: InputProps) => {
 
   return (
-    <div className='input'>
-      <label htmlFor={id} />
+    <S.InputStyled>
+      <label htmlFor={id}>{label}</label>
       <input
         id={id}
         type={type}
@@ -22,6 +14,6 @@ export const Input = ({ testid, id, type, placeholder, value, onChange }: InputP
         value={value}
         onChange={onChange}
       />
-    </div>
+    </S.InputStyled>
   )
 }
