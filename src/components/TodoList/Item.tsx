@@ -20,7 +20,9 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
     };
 
     const handleDeleteClick = () => {
-        deleteTodo(id);
+        if (window.confirm(`'${todo}' 항목을 삭제하시겠습니까?`)) {
+            deleteTodo(id);
+        }
     };
 
     const handleModifyClick = () => {
