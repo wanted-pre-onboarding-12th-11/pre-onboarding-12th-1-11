@@ -2,8 +2,8 @@ import {createBrowserRouter} from 'react-router-dom';
 import App from './App';
 import TodoPage from './pages/Todo';
 import NotFound from './pages/NotFound';
-import {Signup} from './pages/Signup';
-import {Signin} from './pages/Signin';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 import ROUTES from './constants/routes';
 
 import {redirectTodo, redirectSignin} from './utils/redirect';

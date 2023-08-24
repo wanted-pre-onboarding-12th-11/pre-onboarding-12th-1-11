@@ -6,8 +6,6 @@ import * as S from '../../styles/Auth.styled';
 import {AuthFooterProps} from '../../types/AuthTypes';
 
 export const AuthFooter = memo(({text, type, route}: AuthFooterProps) => {
-    console.info('AuthFooter re-rendering');
-
     return (
         <S.AuthFooterStyled>
             <span>{text}</span>
@@ -17,3 +15,5 @@ export const AuthFooter = memo(({text, type, route}: AuthFooterProps) => {
         </S.AuthFooterStyled>
     );
 });
+
+export default AuthFooter;

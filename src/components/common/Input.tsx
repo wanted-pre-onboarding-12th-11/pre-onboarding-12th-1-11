@@ -1,9 +1,9 @@
-import * as S from '../../styles/Common.styled';
+import * as S from '../../styles/Auth.styled';
 import {InputProps} from '../../types/CommonTypes';
 
-export const Input = ({label, testid, id, type, placeholder, value, onChange}: InputProps) => {
+const Input = ({label, testid, id, type, placeholder, value, onChange}: InputProps) => {
     return (
-        <S.InputStyled>
+        <S.AuthInputStyled>
             <label htmlFor={id}>{label}</label>
             <input
                 id={id}
@@ -13,6 +13,8 @@ export const Input = ({label, testid, id, type, placeholder, value, onChange}: I
                 value={value}
                 onChange={onChange}
             />
-        </S.InputStyled>
+        </S.AuthInputStyled>
     );
 };
+
+export default Input;
