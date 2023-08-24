@@ -1,4 +1,4 @@
-import * as TodoType from '../../types/Todo';
+import * as TodoType from '../../types/TodoTypes';
 import * as S from '../../styles/Todo.styled';
 import {useInput} from '../../hooks/useInput';
 
@@ -89,6 +89,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
                             data-testid='modify-input'
                             value={modifiedValue}
                             onChange={handleInputChange}
+                            maxLength={30}
                         />
                     </label>
                     <div>

@@ -5,3 +5,4 @@ export const SIGNIN_SUCCESS = '로그인 성공';
 export const INVALID_ERROR_MSG = '유효하지 않은 에러 발생';
 export const SIGNUP_FAILED = '회원가입에 실패했습니다.';
 export const SIGNIN_FAILED = '로그인에 실패했습니다.';
+export const INVALID_TOKEN_MSG = '유효하지 않은 토큰입니다. 다시 로그인 해 주세요.';

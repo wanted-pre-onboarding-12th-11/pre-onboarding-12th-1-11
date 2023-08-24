@@ -28,6 +28,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
                 data-testid='new-todo-input'
                 type='text'
                 ref={inputRef}
+                maxLength={30}
             />
 
             <Button type='submit' testid='new-todo-add-button'>
