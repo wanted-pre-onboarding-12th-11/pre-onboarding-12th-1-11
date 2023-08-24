@@ -1,20 +1,17 @@
 import {useCallback, useEffect, useState} from 'react';
 import * as fetcher from '../apis/Todo';
-import Create from '../components/Todo/Create';
-import {useTodoDispatch, useTodoState} from '../contexts/TodoContext';
-import Item from '../components/Todo/Item';
 import {INVALID_TOKEN_MSG} from '../constants/message';
-import * as S from '../styles/Todo.styled';
-import {useNavigate} from 'react-router-dom';
 import ROUTES from '../constants/routes';
+import Todo from '../components/Todo';
+import {useNavigate} from 'react-router-dom';
+import {useTodoDispatch} from '../contexts/TodoContext';
+import {useTodoState} from '../contexts/TodoContext';
 
 const TodoContainer = () => {
     const navigate = useNavigate();
-
     const todoState = useTodoState();
     const todoDispatch = useTodoDispatch();
     const [isLoading, setIsLoading] = useState(true);
-    const [modifyModeId, setModifyModeId] = useState<number | null>(null);
     const isNothing = !isLoading && todoState.length === 0;
 
     const getTodo = useCallback(async () => {
@@ -77,36 +74,14 @@ const TodoContainer = () => {
     }, [getTodo]);
 
     return (
-        <S.TodoContainer>
-            <Create createTodo={createTodo} />
-            {isLoading && (
-                <S.Empty>
-                    <S.EmptyMessage>로딩 중...</S.EmptyMessage>
-                </S.Empty>
-            )}
-            {isNothing && (
-                <S.Empty>
-                    <S.BreakImage
-                        src={'/assets/images/coffeebreak.png'}
-                        alt='breaktime'
-                        width='150px'
-                    />
-                    <S.EmptyMessage>아직 할 일이 없습니다!</S.EmptyMessage>
-                </S.Empty>
-            )}
-            <S.TodoList>
-                {todoState.map(item => (
-                    <Item
-                        key={`todo-${item.id}`}
-                        item={item}
-                        updateTodo={updateTodo}
-                        deleteTodo={deleteTodo}
-                        modifyModeId={modifyModeId}
-                        setModifyModeId={setModifyModeId}
-                    />
-                ))}
-            </S.TodoList>
-        </S.TodoContainer>
+        <Todo
+            todoState={todoState}
+            createTodo={createTodo}
+            updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
+            isLoading={isLoading}
+            isNothing={isNothing}
+        />
     );
 };
 
