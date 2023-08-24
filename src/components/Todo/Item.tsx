@@ -42,7 +42,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
     };
 
     return (
-        <>
+        <li>
             {!isModifyMode ? (
                 <S.TodoItem className={isCompleted.toString()}>
                     <label htmlFor={id.toString()}>
@@ -106,7 +106,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
                     </div>
                 </S.ModifyForm>
             )}
-        </>
+        </li>
     );
 };
 
