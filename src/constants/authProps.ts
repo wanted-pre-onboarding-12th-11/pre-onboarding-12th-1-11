@@ -1,9 +1,8 @@
 import ROUTES from '../constants/routes';
-import {signinAPI} from '../apis/signApi';
-import {signupAPI} from '../apis/signApi';
+import {postSignIn, postSignUp} from '../apis/Auth';
 
 export const SIGNIN_PROPS = {
-    api: signinAPI,
+    api: postSignIn,
     title: '로그인',
     navigation: ROUTES.TODO,
     link: ROUTES.SIGNUP,
@@ -14,7 +13,7 @@ export const SIGNIN_PROPS = {
 };
 
 export const SIGNUP_PROPS = {
-    api: signupAPI,
+    api: postSignUp,
     title: '회원가입',
     navigation: ROUTES.SIGNIN,
     link: ROUTES.SIGNIN,

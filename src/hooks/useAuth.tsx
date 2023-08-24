@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {AxiosResponse} from 'axios';
+import {AuthAPI} from '../types/AuthTypes';
 
 interface UseAuthProps {
-    api: (email: string, password: string) => Promise<AxiosResponse<any, any> | undefined>;
+    api: AuthAPI;
     navigation: string;
 }
 
@@ -28,16 +28,18 @@ const useAuth = ({api, navigation}: UseAuthProps) => {
     };
 
     const onSubmit = async () => {
-        console.info('submit');
-
         const {
             email: {value: email},
             password: {value: password},
         } = form;
+
         try {
-            await api(email, password);
-            navigate(navigation);
-        } catch {
+            const res = await api({email, password});
+            if (res.status === 200 || res.status === 201) {
+                navigate(navigation);
+            }
+        } catch (error) {
+            console.error(error);
             alert('실패');
         }
     };
