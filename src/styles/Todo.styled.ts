@@ -63,7 +63,7 @@ export const TodoList = styled.ul`
     }
 
     button {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         width: 50px;
         padding: 4px 8px;
