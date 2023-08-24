@@ -1,19 +1,17 @@
-import { AuthFooterStyled } from '../../styles/Auth.styled';
-import { Link } from 'react-router-dom';
+// react, router import 
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
+// style, type imort 
+import * as S from '../../styles/Auth.styled';
+import { AuthFooterProps } from '../../types/AuthTypes';
 
-interface AuthFooterProps {
-  text: string,
-  type: string,
-  route: string,
-}
 export const AuthFooter = memo(({ text, type, route }: AuthFooterProps) => {
   console.info('AuthFooter re-rendering');
 
   return (
-    <AuthFooterStyled>
+    <S.AuthFooterStyled>
       <span>{text}</span>
-      <Link to={route}>{type}</Link>
-    </AuthFooterStyled>
+      <Link to={route} className='link'>{type}</Link>
+    </S.AuthFooterStyled>
   )
 })
