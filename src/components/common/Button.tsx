@@ -1,15 +1,22 @@
 interface ButtonProps {
-    name: string;
+    children: string;
     type: 'button' | 'submit';
     testid: string;
     handler?: () => void;
     isDisabled?: boolean;
+    className?: string;
 }
 
-const Button = ({name, type, testid, handler, isDisabled = false}: ButtonProps) => {
+const Button = ({children, type, testid, handler, isDisabled = false, className}: ButtonProps) => {
     return (
-        <button type={type} data-testid={testid} onClick={handler} disabled={isDisabled}>
-            {name}
+        <button
+            type={type}
+            data-testid={testid}
+            onClick={handler}
+            disabled={isDisabled}
+            className={className}
+        >
+            {children}
         </button>
     );
 };

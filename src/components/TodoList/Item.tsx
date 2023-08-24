@@ -61,19 +61,21 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
 
                     <div>
                         <S.ModifyButton
-                            name='수정'
                             type='button'
                             testid='modify-button'
                             handler={handleModifyClick}
                             isDisabled={modifyModeId !== id && modifyModeId !== null}
-                        />
+                        >
+                            수정
+                        </S.ModifyButton>
                         <S.DeleteButton
-                            name='삭제'
                             type='button'
                             testid='delete-button'
                             handler={handleDeleteClick}
                             isDisabled={modifyModeId !== id && modifyModeId !== null}
-                        />
+                        >
+                            삭제
+                        </S.DeleteButton>
                     </div>
                 </S.TodoItem>
             ) : (
@@ -94,13 +96,16 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
                         />
                     </label>
                     <div>
-                        <S.SubmitButton name='제출' type='submit' testid='submit-button' />
+                        <S.SubmitButton type='submit' testid='submit-button'>
+                            제출
+                        </S.SubmitButton>
                         <S.CancelButton
-                            name='취소'
                             type='button'
                             testid='cancel-button'
                             handler={handleModifyCancelClick}
-                        />
+                        >
+                            취소
+                        </S.CancelButton>
                     </div>
                 </S.ModifyForm>
             )}

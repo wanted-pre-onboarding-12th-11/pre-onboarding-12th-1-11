@@ -30,7 +30,9 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
                 ref={inputRef}
             />
 
-            <Button name='추가' type='submit' testid='new-todo-add-button' />
+            <Button type='submit' testid='new-todo-add-button'>
+                추가
+            </Button>
         </S.TodoCreateForm>
     );
 };
