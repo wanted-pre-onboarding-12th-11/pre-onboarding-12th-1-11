@@ -1,7 +1,6 @@
 // component import
-import {AuthTitle} from '../components/Auth/AuthTitle';
-import {AuthInput} from '../components/Auth/AuthInput';
-import Button from '../components/common/Button';
+import AuthTitle from '../components/Auth/AuthTitle';
+import AuthInput from '../components/Auth/AuthInput';
 import {AuthFooter} from '../components/Auth/AuthFooter';
 import * as S from '../styles/Auth.styled';
 
@@ -17,7 +16,7 @@ import {EMAIL_VALIDATION_MSG, PASSWORD_VALIDATION_MSG} from '../constants/messag
 // types import
 import {AuthPageProps} from '../types/AuthTypes';
 
-export const AuthContainer = ({
+const AuthContainer = ({
     api,
     title,
     navigation,
@@ -26,8 +25,14 @@ export const AuthContainer = ({
     footerType,
     testid,
     footerText,
+    successMsg,
+    errorMsg,
 }: AuthPageProps) => {
-    const {form, onChange, onSubmit, isSignValid} = useAuth({api, navigation});
+    const {form, onChange, onSubmit, isSignValid} = useAuth({
+        api,
+        navigation,
+        message: {success: successMsg, error: errorMsg},
+    });
 
     const [errorMessage, setErrorMessage] = useState({
         emailError: '',
@@ -47,7 +52,7 @@ export const AuthContainer = ({
     return (
         <S.AuthContainerStyled>
             <AuthTitle title={title} />
-            <form>
+            <form onSubmit={onSubmit}>
                 <AuthInput
                     email={form.email.value}
                     handleEmail={onChange}
@@ -55,16 +60,13 @@ export const AuthContainer = ({
                     handlePassword={onChange}
                     errorMessage={errorMessage}
                 />
-                <Button
-                    type={'submit'}
-                    testid={testid}
-                    isDisabled={!isSignValid}
-                    handler={onSubmit}
-                >
+                <S.AuthButtonStyled type={'submit'} testid={testid} isDisabled={!isSignValid}>
                     {buttonType}
-                </Button>
+                </S.AuthButtonStyled>
             </form>
             <AuthFooter text={footerText} type={footerType} route={link} />
         </S.AuthContainerStyled>
     );
 };
+
+export default AuthContainer;

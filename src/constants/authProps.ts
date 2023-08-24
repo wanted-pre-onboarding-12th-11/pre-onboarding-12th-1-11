@@ -1,9 +1,9 @@
 import ROUTES from '../constants/routes';
-import {signinAPI} from '../apis/signApi';
-import {signupAPI} from '../apis/signApi';
+import {postSignIn, postSignUp} from '../apis/Auth';
+import * as M from './message';
 
 export const SIGNIN_PROPS = {
-    api: signinAPI,
+    api: postSignIn,
     title: '로그인',
     navigation: ROUTES.TODO,
     link: ROUTES.SIGNUP,
@@ -11,10 +11,12 @@ export const SIGNIN_PROPS = {
     footerType: '회원가입',
     testid: 'signin-button',
     footerText: '아직 회원이 아니신가요?',
+    successMsg: M.SIGNIN_SUCCESS,
+    errorMsg: M.SIGNIN_FAILED,
 };
 
 export const SIGNUP_PROPS = {
-    api: signupAPI,
+    api: postSignUp,
     title: '회원가입',
     navigation: ROUTES.SIGNIN,
     link: ROUTES.SIGNIN,
@@ -22,4 +24,6 @@ export const SIGNUP_PROPS = {
     footerType: '로그인',
     testid: 'signup-button',
     footerText: '이미 가입하셨나요?',
+    successMsg: M.SIGNUP_SUCCESS,
+    errorMsg: M.SIGNUP_FAILED,
 };

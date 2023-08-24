@@ -1,13 +1,17 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {AxiosResponse} from 'axios';
+import {AuthAPI} from '../types/AuthTypes';
 
 interface UseAuthProps {
-    api: (email: string, password: string) => Promise<AxiosResponse<any, any> | undefined>;
+    api: AuthAPI;
     navigation: string;
+    message: {
+        success: string;
+        error: string;
+    };
 }
 
-const useAuth = ({api, navigation}: UseAuthProps) => {
+const useAuth = ({api, navigation, message}: UseAuthProps) => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: {value: '', validator: (value: string) => value.includes('@'), isValid: false},
@@ -27,18 +31,26 @@ const useAuth = ({api, navigation}: UseAuthProps) => {
         }
     };
 
-    const onSubmit = async () => {
-        console.info('submit');
-
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         const {
             email: {value: email},
             password: {value: password},
         } = form;
+
         try {
-            await api(email, password);
-            navigate(navigation);
-        } catch {
-            alert('실패');
+            const res = await api({email, password});
+
+            if (res.status === 200 || res.status === 201) {
+                if (res.status === 200) {
+                    localStorage.setItem('accessToken', res.data.access_token);
+                }
+                alert(message.success);
+                navigate(navigation);
+            }
+        } catch (error) {
+            console.error(error);
+            alert(message.error);
         }
     };
 

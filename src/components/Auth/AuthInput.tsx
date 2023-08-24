@@ -1,6 +1,5 @@
-import {Input} from '../common/Input';
-import * as S from '../../styles/Auth.styled';
-import {AuthErrorMessage} from './AuthErrorMessage';
+import Input from '../common/Input';
+import AuthErrorMessage from './AuthErrorMessage';
 import {AuthInputProps} from '../../types/AuthTypes';
 
 export const AuthInput = ({
@@ -10,10 +9,8 @@ export const AuthInput = ({
     handlePassword,
     errorMessage,
 }: AuthInputProps) => {
-    console.info('AuthInput re-rendering');
-
     return (
-        <S.AuthInputStyled>
+        <div>
             <Input
                 label='이메일'
                 id='email'
@@ -34,6 +31,8 @@ export const AuthInput = ({
                 onChange={handlePassword}
             />
             <AuthErrorMessage message={password === '' ? '' : errorMessage.passwordError} />
-        </S.AuthInputStyled>
+        </div>
     );
 };
+
+export default AuthInput;

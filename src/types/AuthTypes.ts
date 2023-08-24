@@ -1,8 +1,10 @@
 import {AxiosResponse} from 'axios';
 import {ChangeEvent} from 'react';
 
+export type AuthAPI = ({email, password}: AuthRequestProps) => Promise<AxiosResponse>;
+
 export interface AuthPageProps {
-    api: (email: string, password: string) => Promise<AxiosResponse<any, any> | undefined>;
+    api: AuthAPI;
     title: string;
     navigation: string;
     link: string;
@@ -10,6 +12,8 @@ export interface AuthPageProps {
     footerType: string;
     testid: string;
     footerText: string;
+    successMsg: string;
+    errorMsg: string;
 }
 
 export interface AuthFooterProps {
@@ -27,4 +31,9 @@ export interface AuthInputProps {
         emailError: string;
         passwordError: string;
     };
+}
+
+export interface AuthRequestProps {
+    email: string;
+    password: string;
 }
