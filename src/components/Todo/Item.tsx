@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import * as TodoType from '../../types/TodoList';
-import * as S from '../../styles/TodoList.styled';
+import * as TodoType from '../../types/Todo';
+import * as S from '../../styles/Todo.styled';
 
 interface ItemProps {
     item: TodoType.Item;

@@ -2,14 +2,14 @@
 //- UI 컴포넌트를 컨트롤하는 역할이다.
 
 import {useCallback, useEffect, useState} from 'react';
-import * as fetcher from '../apis/TodoList';
-import Create from '../components/TodoList/Create';
-import {useTodoDispatch, useTodoState} from '../contexts/TodoList';
-import Item from '../components/TodoList/Item';
+import * as fetcher from '../apis/Todo';
+import Create from '../components/Todo/Create';
+import {useTodoDispatch, useTodoState} from '../contexts/Todo';
+import Item from '../components/Todo/Item';
 import {INVALID_ERROR_MSG} from '../constants/message';
-import * as S from '../styles/TodoList.styled';
+import * as S from '../styles/Todo.styled';
 
-const TodoListContainer = () => {
+const TodoContainer = () => {
     const todoState = useTodoState();
     const todoDispatch = useTodoDispatch();
     const [isLoading, setIsLoading] = useState(true);
@@ -122,4 +122,4 @@ const TodoListContainer = () => {
     );
 };
 
-export default TodoListContainer;
+export default TodoContainer;

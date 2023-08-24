@@ -1,5 +1,5 @@
 import React, {Dispatch, ReactNode, createContext, useContext, useReducer} from 'react';
-import * as TodoType from '../types/TodoList';
+import * as TodoType from '../types/Todo';
 
 type TodoAction =
     | {type: 'GET'; payload: TodoType.Item[]}

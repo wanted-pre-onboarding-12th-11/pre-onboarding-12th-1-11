@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 import Button from '../common/Button';
-import * as S from '../../styles/TodoList.styled';
+import * as S from '../../styles/Todo.styled';
 
 interface TodoCreateProps {
     createTodo: (value: string) => void;
