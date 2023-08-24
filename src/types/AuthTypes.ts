@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { ChangeEvent } from 'react';
 
 export interface AuthPageProps {
   api: (email: string, password: string) => Promise<AxiosResponse<any, any> | undefined>,
@@ -11,15 +12,19 @@ export interface AuthPageProps {
   footerText: string,
 }
 
-export interface ButtonProps {
-  type: string;
-  testid: string;
-  disabled?: boolean;
-  onClick: () => Promise<void> | void;
-}
-
 export interface AuthFooterProps {
   text: string,
   type: string,
   route: string,
+}
+
+export interface AuthInputProps {
+  email: string,
+  handleEmail: (e: ChangeEvent<HTMLInputElement>) => void,
+  password: string,
+  handlePassword: (e: ChangeEvent<HTMLInputElement>) => void,
+  errorMessage: {
+    emailError: string,
+    passwordError: string,
+  }
 }
