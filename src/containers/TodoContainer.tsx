@@ -4,7 +4,7 @@
 import {useCallback, useEffect, useState} from 'react';
 import * as fetcher from '../apis/Todo';
 import Create from '../components/Todo/Create';
-import {useTodoDispatch, useTodoState} from '../contexts/Todo';
+import {useTodoDispatch, useTodoState} from '../contexts/TodoContext';
 import Item from '../components/Todo/Item';
 import {INVALID_ERROR_MSG} from '../constants/message';
 import * as S from '../styles/Todo.styled';

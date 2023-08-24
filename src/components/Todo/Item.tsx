@@ -1,4 +1,4 @@
-import * as TodoType from '../../types/Todo';
+import * as TodoType from '../../types/TodoTypes';
 import * as S from '../../styles/Todo.styled';
 import {useInput} from '../../hooks/useInput';
 
