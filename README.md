@@ -31,6 +31,9 @@
 ## 개발 기간
 2023.08.23-2023.08.24
 
+## 팀 노션
+[팀 노션 링크](https://motley-bird-51b.notion.site/1-d775dd0ab1f5484593079b6349a0065f?pvs=4)
+
 ## 시작 가이드
 * 배포 주소
 🔗 https://pre-onboarding-12th-1-11.vercel.app/
@@ -54,8 +57,7 @@
 ## ✨ Best Practice 도출
 
 ### 1. Best Practice를 위해 고민한 내용들 (토론한 내용 결과, 근거)
-- 노션의 내용을 간략하게 정리해서 리드미에 올리기
-- 노션 링크 첨부 (노션 정리) (혜수)
+- [노션 링크](https://motley-bird-51b.notion.site/Best-Practice-91e158df7e814602b142c18693eac97a?pvs=4) 참고
 
 ### 2. 프론트엔드 아키텍쳐
 
@@ -77,7 +79,10 @@
  > - 체크박스를 통해 Todo 완료 여부를 확인, 수정할 수 있습니다.
  > - 유효하지 않은 토큰을 가진 사용자가 접속시에는 토큰 삭제 및 로그인 페이지로 이동합니다.
 
-### 4. 디렉토리 구조
+### 4. 트러블 슈팅
+- [노션 링크](https://motley-bird-51b.notion.site/f598f800796241b593eff5e2fa60d9e3?pvs=4) 참고
+
+### 5. 디렉토리 구조
   ```
   📦 src
   ├── 📂 apis
@@ -96,7 +101,7 @@
   └── 📂 utils
   ```
 
-### 5. 컨벤션
+### 6. 컨벤션
 
   #### `커밋 컨벤션`
   | 커밋 유형 | 의미 |
@@ -120,9 +125,8 @@
     `feature/TJ-ProfilePage`
     
   #### `코드 컨벤션`,`formatting, lint 컨벤션`
-  - [Notion 링크](https://motley-bird-51b.notion.site/d921faeed6f8452b89bc5e04f0b21c2c) 참고
+  - [Notion 링크](https://motley-bird-51b.notion.site/3a21f7d6905f4d84b58b50471dd45d19?pvs=4) 참고
    
-
 
 ## 기술스택 
 
