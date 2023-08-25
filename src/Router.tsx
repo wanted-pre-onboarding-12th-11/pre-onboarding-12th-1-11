@@ -15,7 +15,7 @@ export const Router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Navigate to='/todo' replace={true} />,
+                element: <Navigate to={ROUTES.TODO} replace={true} />,
                 loader: redirectTodo,
             },
             {
