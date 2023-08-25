@@ -1,7 +1,7 @@
 // component import
 import AuthTitle from '../components/Auth/AuthTitle';
 import AuthInput from '../components/Auth/AuthInput';
-import {AuthFooter} from '../components/Auth/AuthFooter';
+import AuthFooter from '../components/Auth/AuthFooter';
 import * as S from '../styles/Auth.styled';
 
 // custom hook, api, validation import

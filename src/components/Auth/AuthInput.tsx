@@ -2,7 +2,7 @@ import Input from '../common/Input';
 import AuthErrorMessage from './AuthErrorMessage';
 import {AuthInputProps} from '../../types/AuthTypes';
 
-export const AuthInput = ({
+const AuthInput = ({
     email,
     handleEmail,
     password,
