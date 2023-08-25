@@ -1,11 +1,35 @@
-# pre-onboarding-12th-1-11
-## 프로젝트에 대한 정보
+# 원티드 프리온보딩 프론트엔드 12차 1주차 과제 - 11팀
+
+## 과제 소개
+- 동료학습을 통해서 팀에서 생각한 원티드 프리온보딩 [프론트엔드 인턴십 선발 과제](https://github.com/walking-sunset/selection-task)의 Best Pratice를 만들고 제출해주세요
+> Best Practice란 모범사례라는 말로서, 특정 문제를 효과적으로 해결하기 위한 가장 성공적인 해결책 또는 방법론을 의미합니다. 
+과제 수행 과정에서 Best Practice란 팀원들이 각자의 구현방법을 설명하고 토론했을 때 팀 안에서 이 방법이 가장 효율적이라고 판단되는 것을 정하고 그것을 팀의 Best Practice로 삼는것입니다.
+이때 특정한 팀원의 과제 전체를 Best Practice로 선정하는 것이 아닌, 과제의 각 부분이나 중점을 둬야할 부분을 단위를 나눈뒤, 각 단위마다의 Best Practice를 토론하고, 단위별로 Best Practice를 모아서 팀의 최종 결과물을 만들어내는 방식으로 진행해주세요.
+
+## 팀원 소개
+
+> 이름을 클릭하면 개인 레포지토리로 이동합니다.
+
+|  [팀장] [장택진](https://github.com/TaekJinJang)     |  [김영채](https://github.com/0chae01)    |   [박상준](https://github.com/owen970517)            |  [오아름](https://github.com/Aroma-oh)             |[이새미](https://github.com/saemileee)| [홍혜수](https://github.com/hyesuhong)|
+| :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/TaekJinJang" width="150" height="150"> | <img src="https://avatars.githubusercontent.com/0chae01" width="150" height="150"> | <img src="https://avatars.githubusercontent.com/owen970517" width="150" height="150"> | <img src="https://avatars.githubusercontent.com/Aroma-oh" width="150" height="150"> | <img src="https://avatars.githubusercontent.com/saemileee" width="150" height="150"> | <img src="https://avatars.githubusercontent.com/hyesuhong" width="150" height="150"> |
+
+
+
+## 목표 설정
+- 사전 선발 과제에 대한 Best Practice 도출
+- Best Practice 도출을 위한 토론 및 소통 경험
+- 확장성 고려
+- UX 고려
+- 클린코드 (유지보수성 고려)
+
+## 개발 기간
+2023.08.23-2023.08.24
+
 ## 시작 가이드
-* 필요사항
-  ```
-  Node.js
-  Npm
-  ```
+* 배포 주소
+🔗 https://pre-onboarding-12th-1-11.vercel.app/
+
 * 프로젝트 실행 방법
   ```
   $ npm install
@@ -13,10 +37,9 @@
   ```
 
 ## 화면 구성
-## Best Parctice라고 생각한 이유 기술
+## Best Practice라고 생각한 이유 기술
 ### 프론트엔드 아키텍쳐
 ### 주요 기능
-
   #### `Auth`
   
   - 회원가입과 로그인 기능을 제공합니다.
@@ -66,108 +89,16 @@
   | design | UI 디자인 |
   | merge | 머지, 충돌해결 등  |
 
-#### `코드 컨벤션`
-  #### 함수 관련 규칙 
-  
-  - Arrow function을 사용합니다.
-  - 매개변수가 두개 이상일때 소괄호를 사용합니다.
-  
-  #### API 규칙
-  
-  - API 통신 핸들러 이름은 [제공되는  스펙](https://github.com/walking-sunset/selection-task#1-auth)을 따릅니다.
-  - 핸들러 함수 이름 지정은 `handle+함수명` 으로 통일합니다.
-      - 예시: handleModify
-  
-  #### 디렉토리 및 파일 규칙
-  
-  - 컴포넌트 관련 폴더는 메인 컴포넌트명으로 pascal case를 적용합니다. 이외에는 모두 소문자에 복수형을 적용합니다.
-  - 컴포넌트 파일은 pascal case를 적용합니다. 이외는 모두 camel case로 통일합니다.
-  - 스타일 컴포넌트 파일은 파일명 뒤에 .styled를 명시합니다.
-      - 예시: Auth.styled.ts
-  
-  #### 함수명, 변수명 규칙
-  
-  - 컴포넌트는 Todo, 함수는 todo로 통일합니다. ToDo, TODO 등은 사용하지 않습니다.
-  - 컴포넌트가 아닌 일반 함수 및 변수명은 camel case를 적용합니다.
-  
-  #### import 규칙
-  
-  - 아래의 예시와 같이 와일드카드로 불러온 모듈은 별칭을 지정합니다.
-      
-      import * as S from "../styles/Todo.styled";
-      
-      import * as TodoType from “../types/Todo”; → TodoType.Item[]
-      
-  
-  #### 스타일링 규칙
-  
-  - styled-components 라이브러리를 이용합니다.
-  - 스타일 폴더에서 모든 스타일링 코드를 관리합니다.
-  - 컬러는 global.css에서 변수 설정 후 사용합니다.
-
-#### `브랜치 컨벤션`
+  #### `브랜치 컨벤션`
   - master 브랜치를 직접 작업하지 않습니다.
   - 브랜치는 feature/이름약자-[작업내용] 형태로 생성합니다.
 
     `feature/TJ-ProfilePage`
+    
+  #### `코드 컨벤션`,`formatting, lint 컨벤션`
+  - Notion 링크 참고
+   
 
-#### `formatting, lint 컨벤션`
-  - 팀원간의 코드 스타일과 문법 컨벤션을 맞추기 위해 Prettier, ESLint를 사용했습니다.
-- 휴먼 오류로 인한 컨벤션 불일치 가능성을 줄이기 위해 Prettier, ESLint 실행 코드는 스크립트화하여 husky에서 트리거에 따라 자동실행되도록 하였습니다.
-    
-    ```
-    // .prettierrc.json
-    
-    module.exports = {
-        singleQuote: true,
-        endOfLine: 'lf',
-        trailingComma: 'es5',
-        bracketSpacing: false,
-        jsxSingleQuote: true,
-        tabWidth: 4,
-        printWidth: 100,
-        proseWrap: 'always',
-        arrowParens: 'avoid',
-    };
-    ```
-    
-    ```
-    // .eslintrc
-    
-    {
-        "env": {
-            "browser": true,
-            "node": true
-        },
-        "extends": [
-            "react-app",
-            "prettier",
-            "eslint:recommended",
-            "plugin:@typescript-eslint/recommended"
-        ],
-        "rules": {
-            "no-var": "error", 
-            "no-multiple-empty-lines": "error", 
-            "no-console": ["error", {"allow": ["warn", "error", "info"]}], 
-            "eqeqeq": "error", 
-            "dot-notation": "error", 
-            "no-unused-vars": "error" 
-        }
-    }
-    ```
-    
-    ```
-    // package.json
-    { 
-    	"scripts": {
-            ...,
-            "postinstall": "husky install",
-            "format": "prettier --cache --write .",
-            "lint": "eslint --cache ."
-        },
-    	...이외 생략
-    }
-    ```
 ### Best Practice를 위해 고민한 내용들 (토론한 내용 결과, 근거)
 - 노션의 내용을 간략하게 정리해서 리드미에 올리기
 - 노션 링크 첨부 (노션 정리) (혜수)
