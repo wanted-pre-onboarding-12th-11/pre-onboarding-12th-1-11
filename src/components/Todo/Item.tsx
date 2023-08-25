@@ -1,6 +1,7 @@
 import * as TodoType from '../../types/TodoTypes';
 import * as S from '../../styles/Todo.styled';
 import {useInput} from '../../hooks/useInput';
+import {useEffect, useRef} from 'react';
 
 interface ItemProps {
     item: TodoType.Item;
@@ -14,6 +15,14 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
     const {id, todo, isCompleted} = item;
     const isModifyMode = modifyModeId === id;
     const [modifiedValue, handleInputChange, setModifiedValue] = useInput(todo);
+
+    const modifyInputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        if (modifyInputRef.current) {
+            modifyInputRef.current.focus();
+        }
+    }, [modifyModeId]);
 
     const handleIsCompletedChange = () => {
         updateTodo(id, todo, !isCompleted);
@@ -90,6 +99,7 @@ const Item = ({item, updateTodo, deleteTodo, modifyModeId, setModifyModeId}: Ite
                             value={modifiedValue}
                             onChange={handleInputChange}
                             maxLength={30}
+                            ref={modifyInputRef}
                         />
                     </label>
                     <div>
