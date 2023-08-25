@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import * as S from '../../styles/Auth.styled';
 import {AuthFooterProps} from '../../types/AuthTypes';
 
-export const AuthFooter = memo(({text, type, route}: AuthFooterProps) => {
+const AuthFooter = memo(({text, type, route}: AuthFooterProps) => {
     return (
         <S.AuthFooterStyled>
             <span>{text}</span>
