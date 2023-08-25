@@ -12,11 +12,11 @@ const TodoController = ({setIsLoading}: TodoControllerProps) => {
     const navigate = useNavigate();
     const todoDispatch = useTodoDispatch();
 
-    const handleErrorResponse = () => {
+    const handleErrorResponse = useCallback(() => {
         alert(INVALID_TOKEN_MSG);
         localStorage.removeItem('accessToken');
         navigate(ROUTES.SIGNIN);
-    };
+    }, [navigate]);
 
     const getTodo = useCallback(async () => {
         try {
@@ -27,7 +27,7 @@ const TodoController = ({setIsLoading}: TodoControllerProps) => {
         } finally {
             setIsLoading(false);
         }
-    }, [navigate, todoDispatch]);
+    }, [handleErrorResponse, setIsLoading, todoDispatch]);
 
     const createTodo = useCallback(
         async (value: string) => {
@@ -38,7 +38,7 @@ const TodoController = ({setIsLoading}: TodoControllerProps) => {
                 handleErrorResponse();
             }
         },
-        [navigate, todoDispatch]
+        [handleErrorResponse, todoDispatch]
     );
 
     const updateTodo = useCallback(
@@ -50,7 +50,7 @@ const TodoController = ({setIsLoading}: TodoControllerProps) => {
                 handleErrorResponse();
             }
         },
-        [navigate, todoDispatch]
+        [handleErrorResponse, todoDispatch]
     );
 
     const deleteTodo = useCallback(
@@ -62,7 +62,7 @@ const TodoController = ({setIsLoading}: TodoControllerProps) => {
                 handleErrorResponse();
             }
         },
-        [navigate, todoDispatch]
+        [handleErrorResponse, todoDispatch]
     );
 
     return {getTodo, createTodo, updateTodo, deleteTodo};
