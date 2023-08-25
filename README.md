@@ -120,7 +120,7 @@
     `feature/TJ-ProfilePage`
     
   #### `코드 컨벤션`,`formatting, lint 컨벤션`
-  - Notion 링크 참고
+  - [Notion 링크](https://motley-bird-51b.notion.site/d921faeed6f8452b89bc5e04f0b21c2c) 참고
    
 
 
